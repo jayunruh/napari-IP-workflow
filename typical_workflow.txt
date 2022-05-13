@@ -1,0 +1,14 @@
+typical workflow
+load diverse images
+project
+backsub (manual or check)
+--find via minimum filter with large size
+--pre-blur and exclude border
+duplicate seg channel
+blur
+process?
+threshfrac (max, percentile, avg)
+filter (area circ)
+dilate/circ
+measure subtracted and shapes
+output table

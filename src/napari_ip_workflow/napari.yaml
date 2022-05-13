@@ -1,0 +1,10 @@
+name: napari-IP-workflow
+display_name: Image Processing Workflow
+contributions:
+  commands:
+    - id: napari-IP-workflow.ipwidgets
+      python_name: napari_ip_workflow.ipwidgets
+      title: Make Image Processing Widget
+  widgets:
+    - command: napari-IP-workflow.ipwidgets
+      display_name: Make Image Processing Widget
