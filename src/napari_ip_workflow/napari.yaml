@@ -2,9 +2,10 @@ name: napari-IP-workflow
 display_name: Image Processing Workflow
 contributions:
   commands:
-    - id: napari-IP-workflow.ipwidgets
-      python_name: napari_ip_workflow.ipwidgets
-      title: Make Image Processing Widget
+    - id: napari-IP-workflow.segwidget
+      python_name: napari_ip_workflow.segwidget:makeSegWidget
+      title: Make Segmentation Widget
   widgets:
-    - command: napari-IP-workflow.ipwidgets
-      display_name: Make Image Processing Widget
+    - command: napari-ip-workflow.segwidget
+      display_name: Make Segmentation Widget
+      autogenerate: True

@@ -1,11 +1,12 @@
 # +
 '''
 Copyright Jay Unruh, Stowers, 2022
-License: GPLv2:
+License: GPLv3:
 '''
 import numpy as np
 import scipy.ndimage as ndi
 import pandas as pd
+import skimage.segmentation as sks
 
 def getCircMask(xc,yc,rad,width,height):
     xs,ys=np.meshgrid(np.arange(width),np.arange(height))
@@ -68,6 +69,14 @@ def findNuclei(nucimg,smstd=3,threshfrac=0.25,threshstat='Max',threshpercentile=
     #refind the objects
     objects,nobj=ndi.label(objects>0.0)
     return objects
+
+def findCirc(nucimg,smstd=3,threshfrac=0.25,threshstat='Max',threshpercentile=99.0,
+    minarea=10,maxarea=1e+6,circgap=2,circrad=4):
+    labels=findNuclei(nucimg,smstd,threshfrac,threshstat,threshpercentile,minarea,maxarea)
+    gapped=sks.expand_labels(labels,circgap)
+    circ=sks.expand_labels(gapped,circrad)
+    circ[gapped!=0.0]=0.0
+    return circ
 
 def getMeasurement(img,labels,backcoords,statfunc='Avg',getareas=True):
     stats={'Avg':np.mean,'Median':np.median,
