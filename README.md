@@ -9,7 +9,7 @@
 
 A plugin to do image preprocessing, segmentation, and measurements on other images.  The typical workflow is background subtraction followed by smoothing, thresholding, and size filtering.  This is typically done on nuclear stained images.  Segmentation can optionally be followed by circular label expansion to find cytoplasmic signals. The labeled signals are then measured on background subtracted images.
 
-##General organization
+## General organization
 
 The code is separated into non-interactive processing functions (ipfunctions module) and an interactive widget (segwidget module).  Please look at the code on github for examples: [Github](https://github.com/jayunruh/napari-ip-workflow). The expected workflow is from jupyter notebooks with an interactive workflow shown in src/napari-ip-workflow/_tests/standard_segementation_widget.ipynb and a non-interactive workflow shown in src/napari-ip-workflow/_tests/standard_segmentation.ipynb.  The expectation is to find the best parameters in an interactive way (ideally testing on several images) and then use the non-interactive workflow to batch through more data sets.  All image processing algorithms are in the ipfunctions module and the segwidget module has the Napari widget code.  Below I describe the strategies that are utilized in the workflow.
 
